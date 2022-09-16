@@ -4,7 +4,14 @@ const cashGiven = document.querySelector('#Cash-Given');
 const checkButton = document.querySelector("#check");
  // const noof = document.querySelector(".abc");
  const cerr = document.querySelector("#mess");
+ const label = document.querySelector("#l1");
 
+function Popup(){
+    console.log("Adsds");
+    cashGiven.style.display = "flex";
+    label.style.display = "flex";
+
+}
 
 checkButton.addEventListener("click", function Clik(){
 
