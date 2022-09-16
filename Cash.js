@@ -7,26 +7,19 @@ const checkButton = document.querySelector("#check");
 checkButton.addEventListener("click", function Clik(){
 
 
-    if(billAmount > 0){
+    if(billAmount.value > 0){
         
-
-        if(billAmount.value <= cashGiven.value){
+        if(billAmount.value >= cashGiven.value){
     
-            ShowMessage("Invalid");
+            ShowMessage("Amount cannot be the less than the bill");
         
            }else{
-            console.log("hello");
+            ShowMessage("");
            }
-
-
     }else{
 
         ShowMessage("Invalid Amount");
     }
-
-
-
-
    
 });
 
