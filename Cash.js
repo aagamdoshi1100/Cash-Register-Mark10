@@ -2,39 +2,60 @@
 const billAmount = document.querySelector('#Bill-Amount');
 const cashGiven = document.querySelector('#Cash-Given');
 const checkButton = document.querySelector("#check");
- // const noof = document.querySelector(".abc");
+
  const cerr = document.querySelector("#mess");
  const label = document.querySelector("#l1");
 
-function Popup(){
-    console.log("Adsds");
+
+
+ function Popup(){
+    
     cashGiven.style.display = "flex";
     label.style.display = "flex";
 
+    // if(billAmount.value < 0){
+    //     checkButton.disabled =true;
+    //     ShowMessage("Please enter valid value. Value must be positive");
+
+    // }
+   
 }
+
 
 checkButton.addEventListener("click", function Clik(){
 
+    if(billAmount.value < 0){
+       
+        ShowMessage("Please enter valid value. Value must be positive");
+    }else{
 
-    if(billAmount.value > 0){
-        
-        if(billAmount.value >= cashGiven.value){
+   if(cashGiven.value < 0){
+
+    ShowMessage("Please enter valid value. Value must be positive");
+   }else{
+    if(billAmount.value > cashGiven.value){
     
-            ShowMessage("Amount cannot be the less than the bill");
+            ShowMessage("Bill amount is more. Please give more cash");
         
            }else{
-
-            var finalCash = cashGiven.value -billAmount.value;
+            ShowMessage("");
+            checkButton.disabled =false;
+            var finalCash = cashGiven.value - billAmount.value;
             FinalCashReturnToUser(finalCash);
 
            }
-    }else{
-
-        ShowMessage("Invalid Amount");
+        }
     }
-   
-});
+    }
+);
 
+
+function ShowMessage(message){
+    // console.log("Invalid value");
+    cerr.style.color="Red";
+    cerr.innerText = message;
+    // document.getElementById('mess').innerHTML = message;
+}
 
 // const aNotes = [2000, 500, 100, 20, 10, 5, 1];
 // console.log(aNotes.length);
@@ -62,11 +83,7 @@ function FinalCashReturnToUser(fcash){
 }
 
 
-function ShowMessage(message){
-    
-    cerr.innerText = message;
-    // document.getElementById('mess').innerHTML = message;
-}
+
 
 function Thou(fcash){
 
