@@ -18,18 +18,20 @@ const checkButton = document.querySelector("#check");
 
 checkButton.addEventListener("click", function Clik(){
 
- 
-        var bill = billAmount.value;
-        var collection = cashGiven.value;
+
+        var bill = Number(billAmount.value);
+        var collection = Number(cashGiven.value);
 
         if(bill > 0 && collection > 0){
-
+            console.log(typeof(bill))
                     if(bill < collection){
                         ShowMessage("");
                         var finalCash = collection - bill;
+                        clearOp();
                         FinalCashReturnToUser(finalCash);
                     }else{
                         ShowMessage("Bill amount is more. Please give more cash");
+                        console.log("Hello")
                         clearOp();
                     }
 
@@ -45,16 +47,11 @@ checkButton.addEventListener("click", function Clik(){
 
 
 function ShowMessage(message){
-    // console.log("Invalid value");
     cerr.style.color="Red";
     cerr.innerText = message;
-    // document.getElementById('mess').innerHTML = message;
 }
 
-// const aNotes = [2000, 500, 100, 20, 10, 5, 1];
-// console.log(aNotes.length);
 
-//3450
 
 function FinalCashReturnToUser(fcash){
    
