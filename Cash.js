@@ -13,41 +13,35 @@ const checkButton = document.querySelector("#check");
     cashGiven.style.display = "flex";
     label.style.display = "flex";
 
-    // if(billAmount.value < 0){
-    //     checkButton.disabled =true;
-    //     ShowMessage("Please enter valid value. Value must be positive");
-
-    // }
-   
 }
 
 
 checkButton.addEventListener("click", function Clik(){
 
-    if(billAmount.value < 0){
-       
-        ShowMessage("Please enter valid value. Value must be positive");
-    }else{
+ 
+        var bill = billAmount.value;
+        var collection = cashGiven.value;
 
-   if(cashGiven.value < 0){
+        if(bill > 0 && collection > 0){
 
-    ShowMessage("Please enter valid value. Value must be positive");
-   }else{
-    if(billAmount.value > cashGiven.value){
-    
-            ShowMessage("Bill amount is more. Please give more cash");
-        
-           }else{
-            ShowMessage("");
-            checkButton.disabled =false;
-            var finalCash = cashGiven.value - billAmount.value;
-            FinalCashReturnToUser(finalCash);
+                    if(bill < collection){
+                        ShowMessage("");
+                        var finalCash = collection - bill;
+                        FinalCashReturnToUser(finalCash);
+                    }else{
+                        ShowMessage("Bill amount is more. Please give more cash");
+                        clearOp();
+                    }
 
-           }
+        }else{
+            ShowMessage("Please enter valid value. Value must be positive");
+            clearOp();  
         }
-    }
-    }
-);
+
+
+
+
+})
 
 
 function ShowMessage(message){
@@ -175,4 +169,15 @@ function One(fcash){
     // console.log(changes);
     document.getElementById('7').innerHTML = ~~cash;
 
+}
+
+
+function clearOp(){
+            document.getElementById('1').innerHTML = "";
+            document.getElementById('2').innerHTML = "";
+            document.getElementById('3').innerHTML = "";
+            document.getElementById('4').innerHTML = "";
+            document.getElementById('5').innerHTML = "";
+            document.getElementById('6').innerHTML = "";
+            document.getElementById('7').innerHTML = "";
 }
